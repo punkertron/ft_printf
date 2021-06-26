@@ -1,4 +1,4 @@
-SRCS		= ft_printf.c
+SRCS		= ft_printf.c fill_flags.c
 SRCS_L		= libft/*.c
 
 OBJS		= ${SRCS:.c=.o}
@@ -35,4 +35,7 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re bonus
+go:			$(NAME)
+			${CC} ${CFLAGS} -g main.c -L. -lftprintf && ./a.exe
+
+.PHONY:		all clean fclean re bonus go
