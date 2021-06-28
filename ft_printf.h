@@ -13,7 +13,10 @@ typedef struct s_flags
 }	t_flags;
 
 int		ft_printf(const char *format, ...);
-ssize_t	ft_format(char **str, va_list *ap);
+ssize_t	ft_format(char **str, va_list *ap, ssize_t a);
+ssize_t	ft_next(va_list *ap, t_flags **flags, ssize_t a);
+
+char	*ft_copy_c(va_list *ap, t_flags *flags);
 
 int		ft_get_flag(char **str);
 int		ft_get_width(char **str);

@@ -1,4 +1,4 @@
-SRCS		= ft_printf.c fill_flags.c
+SRCS		= ft_printf.c fill_flags.c print_c.c
 SRCS_L		= libft/*.c
 
 OBJS		= ${SRCS:.c=.o}
@@ -27,11 +27,11 @@ all:		$(NAME)
 bonus:		all
 
 clean:
-			${RM} ${OBJS} ${OBJS_B}
+			${RM} ${OBJS}
 			${MAKE} fclean -C ./libft
 
 fclean:		clean
-			${RM} ${NAME}
+			${RM} ${NAME} a.exe
 
 re:			fclean all
 

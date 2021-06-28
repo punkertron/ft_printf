@@ -3,7 +3,7 @@
 
 int	main(void)
 {
-	int q = ft_printf("Hello!4%25.56s");
+	int q = ft_printf("Hello!4%c", 'Y');
 	printf("\nq = %d", q);
 	printf("\n\nabc%%");
 	return (0);
