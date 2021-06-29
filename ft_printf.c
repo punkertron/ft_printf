@@ -7,10 +7,11 @@ int		ft_printf(const char *format, ...)
 	ssize_t	a;
 	ssize_t	q;
 	char	*str;
+	char	*tmp;
 
 	str = ft_strdup(format);
+	tmp = str;
 	a = 0;
-
 	va_start(ap, format);
 	while (*str)
 	{
@@ -19,7 +20,7 @@ int		ft_printf(const char *format, ...)
 			str++;
 			q = a;
 			a += ft_format(&str, &ap, a);
-			if (q < a)
+			if (q > a)
 				return (-1);
 		}
 		else
@@ -30,6 +31,7 @@ int		ft_printf(const char *format, ...)
 		}
 	}
 	va_end(ap);
+	free(tmp);
 	return (a);
 }
 
@@ -50,13 +52,14 @@ ssize_t	ft_format(char **str, va_list *ap, ssize_t a)
 		return (-10);
 	}
 	flags->flag = ft_get_flag(str);
-//	printf("\nflag = %d", flags->flag);
-	flags->width = ft_get_width(str);
-//	printf("\nwidth = %d", flags->width);
-	flags->precision = ft_get_precision(str);
-//	printf("\nprecision = %d", flags->precision);
-	flags->type = ft_get_type(str); // 1 - minus, 0 - plus
-//	printf("\ntype = %d", flags->type);
+	flags->width = ft_get_width(ap, str);
+	flags->precision = ft_get_precision(ap, str);
+	flags->type = ft_get_type(str);
+	/*
+	printf("\nflag = %d", flags->flag);
+	printf("\nwidth = %d", flags->width);
+	printf("\nprecision = %d", flags->precision);
+	printf("\ntype = %d", flags->type);*/
 //	printf("\nstr = |%s|", *str);
 
 	return (ft_next(ap, &flags, a));
@@ -64,13 +67,14 @@ ssize_t	ft_format(char **str, va_list *ap, ssize_t a)
 
 ssize_t	ft_next(va_list *ap, t_flags **flags, ssize_t a)
 {
-	char *copy;
+	char 	*copy;
+	int		q;
 
 	if ((*flags)->type == 1)
 		copy = ft_copy_c(ap, *flags);
-	else if ((*flags)->type == 1)
-		copy = ft_copy_c(ap, *flags);
-	else if ((*flags)->type == 1)
+	else if ((*flags)->type == 2)
+		copy = ft_copy_s(ap, *flags);
+	else if ((*flags)->type == 3)
 		copy = ft_copy_c(ap, *flags);
 	else if ((*flags)->type == 1)
 		copy = ft_copy_c(ap, *flags);
@@ -79,10 +83,11 @@ ssize_t	ft_next(va_list *ap, t_flags **flags, ssize_t a)
 	else if ((*flags)->type == 1)
 		copy = ft_copy_c(ap, *flags);
 		
-	printf("\ncopy = |%s|", copy);
-	(void) copy;
-	(void) ap;
-	(void) flags;
+	ft_putstr_fd(copy, 1);
+//	printf("\ncopy = |%s|", copy);
+	q = ft_strlen(copy);
+	free(copy);
+	free(*flags);
 	(void) a;
-	return (0);
+	return (q);
 }

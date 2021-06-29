@@ -5,24 +5,24 @@ char	*ft_copy_c(va_list *ap, t_flags *flags)
 	char	*copy;
 	int		a;
 
-	a = 0;
-	copy = malloc(sizeof(char) * (2 + flags->width));
+	a = flags->width;
+	if (a == 0)
+		a = 1;
+	copy = malloc(sizeof(char) * (1 + a));
 	if (!copy)
 		return (NULL);
+	a = -1;
 	if (flags->flag == -1)
 	{
-		copy[a] = va_arg(*ap, unsigned int);
-		while (++a <= flags->width)
+		copy[++a] = va_arg(*ap, unsigned int);
+		while (++a <= flags->width - 1)
 			copy[a] = ' ';
 		copy[a] = '\0';
 	}
 	else
 	{
-		while (a < flags->width)
-		{
+		while (++a < flags->width - 1)
 			copy[a] = ' ';
-			a++;
-		}
 		copy[a] = va_arg(*ap, unsigned int);
 		copy[++a] = '\0';
 	}
