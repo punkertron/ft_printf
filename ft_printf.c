@@ -59,7 +59,8 @@ ssize_t	ft_format(char **str, va_list *ap, ssize_t a)
 	printf("\nflag = %d", flags->flag);
 	printf("\nwidth = %d", flags->width);
 	printf("\nprecision = %d", flags->precision);
-	printf("\ntype = %d", flags->type);*/
+	printf("\ntype = %d", flags->type);
+	*/
 //	printf("\nstr = |%s|", *str);
 
 	return (ft_next(ap, &flags, a));
@@ -76,8 +77,8 @@ ssize_t	ft_next(va_list *ap, t_flags **flags, ssize_t a)
 		copy = ft_copy_s(ap, *flags);
 	else if ((*flags)->type == 3)
 		copy = ft_copy_c(ap, *flags);
-	else if ((*flags)->type == 1)
-		copy = ft_copy_c(ap, *flags);
+	else if ((*flags)->type == 4)
+		copy = ft_copy_di(ap, *flags);
 	else if ((*flags)->type == 1)
 		copy = ft_copy_c(ap, *flags);
 	else if ((*flags)->type == 1)

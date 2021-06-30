@@ -1,7 +1,6 @@
 #include "ft_printf.h"
-#include <stdio.h>
 
-int	ft_quantity(t_flags *flags, char *tmp)
+int	ft_quantity_s(t_flags *flags, char *tmp)
 {
 	int	q;
 
@@ -23,7 +22,7 @@ void	ft_fill_s2(int a, t_flags *flags, char *tmp, char **copy)
 {
 	int	q;
 
-	q = ft_quantity(flags, tmp);
+	q = ft_quantity_s(flags, tmp);
 	while (tmp[++a] && a < flags->precision)
 		(*copy)[a] = tmp[a];
 	while (a < (int)q)
@@ -73,7 +72,7 @@ char	*ft_copy_s(va_list *ap, t_flags *flags)
 	tmp = ft_strdup(va_arg(*ap, char *));
 	if (!tmp)
 		return (NULL);
-	q = ft_quantity(flags, tmp);
+	q = ft_quantity_s(flags, tmp);
 	copy = malloc(sizeof(char) * (1 + q));
 	if (!copy)
 		return (NULL);

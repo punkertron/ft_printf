@@ -65,16 +65,14 @@ int	ft_get_type(char **str)
 		a = 2;
 	else if (**str == 'p')
 		a = 3;
-	else if (**str == 'd')
+	else if (**str == 'd' || **str == 'i')
 		a = 4;
-	else if (**str == 'i')
-		a = 5;
 	else if (**str == 'u')
-		a = 6;
+		a = 5;
 	else if (**str == 'x')
-		a = 7;
+		a = 6;
 	else if (**str == 'X')
-		a = 8;
+		a = 7;
 	(*str)++;
 	return (a);
 }
