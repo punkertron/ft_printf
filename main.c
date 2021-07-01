@@ -20,9 +20,16 @@ int	main(void)
 		int i = printf("|%1.2s|\n", "abc");
 		printf("\nq = %d, i = %d", q, i);
 	}*/
+	/*
 	{
-		int q = ft_printf("|%12.5d|\n", 0);
-		int i = printf("|%12.5d|\n", 0);
+		int q = ft_printf("|%1.5d|\n", 123);
+		int i = printf("|%1.5d|\n", 123);
+		printf("\nq = %d, i = %d", q, i);
+	}
+	*/
+	{
+		int q = ft_printf("|%-12.3u, u = %u|\n", 123456, 34);
+		int i = printf("|%-12.3u, u = %u|\n", 123456, 34);
 		printf("\nq = %d, i = %d", q, i);
 	}
 //	printf("\n\nabc%%");

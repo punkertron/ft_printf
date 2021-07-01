@@ -4,38 +4,50 @@
 int		ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	ssize_t	a;
-	ssize_t	q;
+	int		a;
 	char	*str;
 	char	*tmp;
 
 	str = ft_strdup(format);
+	if (!str)
+		return (-1);
 	tmp = str;
-	a = 0;
 	va_start(ap, format);
-	while (*str)
-	{
-		if (*str == '%')
-		{
-			str++;
-			q = a;
-			a += ft_format(&str, &ap, a);
-			if (q > a)
-				return (-1);
-		}
-		else
-		{
-			ft_putchar(*str);
-			str++;
-			a++;
-		}
-	}
+	a = ft_printf_next(&str, &tmp, &ap);
+	if (a == -1)
+		return (-1);
 	va_end(ap);
 	free(tmp);
 	return (a);
 }
 
-ssize_t	ft_format(char **str, va_list *ap, ssize_t a)
+int	ft_printf_next(char **str, char **tmp, va_list *ap)
+{
+	int	a;
+	int	q;
+
+	a = 0;
+	while (**str)
+	{
+		if (**str == '%')
+		{
+			(*str)++;
+			q = a;
+			a += ft_format(str, ap);
+			if (q > a)
+			{
+				free(*tmp);
+				va_end(*ap);
+				return (-1);
+			}
+		}
+		else
+			ft_putchar_a(str, &a);
+	}
+	return (a);
+}
+
+int	ft_format(char **str, va_list *ap)
 {
 	t_flags	*flags;
 
@@ -63,10 +75,10 @@ ssize_t	ft_format(char **str, va_list *ap, ssize_t a)
 	*/
 //	printf("\nstr = |%s|", *str);
 
-	return (ft_next(ap, &flags, a));
+	return (ft_next(ap, &flags));
 }
 
-ssize_t	ft_next(va_list *ap, t_flags **flags, ssize_t a)
+int	ft_next(va_list *ap, t_flags **flags)
 {
 	char 	*copy;
 	int		q;
@@ -79,16 +91,19 @@ ssize_t	ft_next(va_list *ap, t_flags **flags, ssize_t a)
 		copy = ft_copy_c(ap, *flags);
 	else if ((*flags)->type == 4)
 		copy = ft_copy_di(ap, *flags);
-	else if ((*flags)->type == 1)
+	else if ((*flags)->type == 5)
+		copy = ft_copy_u(ap, *flags);
+	else if ((*flags)->type == 6)
 		copy = ft_copy_c(ap, *flags);
-	else if ((*flags)->type == 1)
-		copy = ft_copy_c(ap, *flags);
-		
+	if (!(*copy))
+	{
+		free(*flags);
+		return (-1);
+	}
 	ft_putstr_fd(copy, 1);
 //	printf("\ncopy = |%s|", copy);
 	q = ft_strlen(copy);
 	free(copy);
 	free(*flags);
-	(void) a;
 	return (q);
 }

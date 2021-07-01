@@ -1,5 +1,5 @@
-SRCS		= ft_printf.c fill_flags.c ft_itoa_new.c  utils.c \
-				 print_c.c print_s.c print_di.c
+SRCS		= ft_printf.c fill_flags.c ft_itoa_new.c utils.c \
+				 print_c.c print_s.c print_di.c print_u.c
 SRCS_L		= libft/*.c
 
 OBJS		= ${SRCS:.c=.o}

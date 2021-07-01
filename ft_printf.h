@@ -13,8 +13,9 @@ typedef struct s_flags
 }	t_flags;
 
 int		ft_printf(const char *format, ...);
-ssize_t	ft_format(char **str, va_list *ap, ssize_t a);
-ssize_t	ft_next(va_list *ap, t_flags **flags, ssize_t a);
+int		ft_printf_next(char **str, char **tmp, va_list *ap);
+int		ft_format(char **str, va_list *ap);
+int		ft_next(va_list *ap, t_flags **flags);
 
 int		ft_get_flag(char **str);
 int		ft_get_width(va_list *ap, char **str);
@@ -32,7 +33,16 @@ void	ft_fill_di(char **copy, char *tmp, t_flags *flags, int a);
 void	ft_fill_di2(char **copy, char *tmp, t_flags *flags, int a);
 void	ft_fill_di3(char **copy, char *tmp, t_flags *flags, int a);
 
+char	*ft_copy_u(va_list *ap, t_flags *flags);
+void	ft_fill_di_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
+void	ft_fill_di3_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
+void	ft_fill_di2_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
+int		ft_quantity_di_u(t_flags *flags, char *tmp, unsigned int a);
+
 char	*ft_itoa_new(int n);
+char	*ft_itoa_new_u(unsigned int n);
 int		ft_fill_t(t_flags *flags, char *tmp, int a);
+int		ft_fill_t_u(t_flags *flags, char *tmp, unsigned int a);
+void	ft_putchar_a(char **str, int *a);
 
 #endif
