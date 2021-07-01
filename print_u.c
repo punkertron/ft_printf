@@ -78,7 +78,7 @@ char	*ft_copy_u(va_list *ap, t_flags *flags)
 	tmp = ft_itoa_new_u(a);
 	if (!tmp)
 		return (NULL);
-	copy = malloc(sizeof(char) * (ft_quantity_di(flags, tmp, a) + 1));
+	copy = malloc(sizeof(char) * (ft_quantity_di_u(flags, tmp, a) + 1));
 	if (!copy)
 		return (NULL);
 	ft_fill_di_u(&copy, tmp, flags, a);

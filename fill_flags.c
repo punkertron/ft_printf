@@ -24,7 +24,7 @@ int	ft_get_width(va_list *ap, char **str)
 
 	if (**str == '*')
 	{
-		a = va_arg(*ap, unsigned int); //flag of *
+		a = va_arg(*ap, unsigned int);
 		(*str)++;
 	}
 	else
@@ -41,10 +41,10 @@ int	ft_get_precision(va_list *ap, char **str)
 	if (**str == '.')
 		(*str)++;
 	else
-		return(-2); //когда ничего нет
+		return (-2);
 	if (**str == '*')
 	{
-		a = va_arg(*ap, unsigned int); //flag of *
+		a = va_arg(*ap, unsigned int);
 		(*str)++;
 	}
 	else

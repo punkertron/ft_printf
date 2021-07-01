@@ -1,7 +1,6 @@
 #include "ft_printf.h"
-#include <stdio.h>
 
-int		ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		a;
@@ -74,13 +73,12 @@ int	ft_format(char **str, va_list *ap)
 	printf("\ntype = %d", flags->type);
 	*/
 //	printf("\nstr = |%s|", *str);
-
 	return (ft_next(ap, &flags));
 }
 
 int	ft_next(va_list *ap, t_flags **flags)
 {
-	char 	*copy;
+	char	*copy;
 	int		q;
 
 	if ((*flags)->type == 1)
@@ -88,20 +86,19 @@ int	ft_next(va_list *ap, t_flags **flags)
 	else if ((*flags)->type == 2)
 		copy = ft_copy_s(ap, *flags);
 	else if ((*flags)->type == 3)
-		copy = ft_copy_c(ap, *flags);
+		copy = ft_copy_p(ap, *flags);
 	else if ((*flags)->type == 4)
 		copy = ft_copy_di(ap, *flags);
 	else if ((*flags)->type == 5)
 		copy = ft_copy_u(ap, *flags);
-	else if ((*flags)->type == 6)
-		copy = ft_copy_c(ap, *flags);
+	else if ((*flags)->type == 6 || (*flags)->type == 7)
+		copy = ft_copy_x(ap, *flags);
 	if (!(*copy))
 	{
 		free(*flags);
 		return (-1);
 	}
 	ft_putstr_fd(copy, 1);
-//	printf("\ncopy = |%s|", copy);
 	q = ft_strlen(copy);
 	free(copy);
 	free(*flags);
