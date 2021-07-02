@@ -77,6 +77,8 @@ char	*ft_copy_di(va_list *ap, t_flags *flags)
 	int		a;
 
 	a = va_arg(*ap, int);
+	if (flags->precision == 0 && flags->width == 0)
+		return (ft_strdup(""));
 	tmp = ft_itoa_new(a);
 	if (!tmp)
 		return (NULL);

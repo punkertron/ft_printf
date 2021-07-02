@@ -5,17 +5,16 @@ int	ft_quantity_s(t_flags *flags, char *tmp)
 	int	q;
 
 	q = ft_strlen(tmp);
-	if (flags->width > flags->precision && flags->precision <= q)
+	if (flags->width > flags->precision && flags->width > q)
 		return (flags->width);
-	if (q < flags->precision)
+	if (q > flags->precision && flags->precision != -2)
 	{
-		if (q > flags->width)
-			return (q);
-		else
+		if (flags->width > flags->precision)
 			return (flags->width);
+		return (flags->precision);
 	}
 	else
-		return (flags->precision);
+		return (q);
 }
 
 void	ft_fill_s2(int a, t_flags *flags, char *tmp, char **copy)
@@ -68,15 +67,15 @@ char	*ft_copy_s(va_list *ap, t_flags *flags)
 	int		a;
 
 	a = -1;
-	copy = malloc(sizeof(char) * (1 + flags->width));
 	tmp = ft_strdup(va_arg(*ap, char *));
 	if (!tmp)
 		return (NULL);
 	q = ft_quantity_s(flags, tmp);
+//	printf("q=|%d|", q);
 	copy = malloc(sizeof(char) * (1 + q));
 	if (!copy)
 		return (NULL);
-	if (q <= (int)ft_strlen(tmp) && (int)ft_strlen(tmp) >= flags->precision)
+	if (q == (int)ft_strlen(tmp))
 	{
 		while (++a < q)
 			copy[a] = tmp[a];

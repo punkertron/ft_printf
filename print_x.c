@@ -35,6 +35,8 @@ char	*ft_copy_x(va_list *ap, t_flags *flags)
 	unsigned int	a;
 
 	a = va_arg(*ap, unsigned int);
+	if (flags->precision == 0 && flags->width == 0)
+		return (ft_strdup(""));
 	if (flags->type == 6)
 		tmp = ft_convert(a, "0123456789abcdef");
 	else

@@ -24,7 +24,7 @@ int	ft_get_width(va_list *ap, char **str)
 
 	if (**str == '*')
 	{
-		a = va_arg(*ap, unsigned int);
+		a = va_arg(*ap, int);
 		(*str)++;
 	}
 	else
@@ -44,7 +44,7 @@ int	ft_get_precision(va_list *ap, char **str)
 		return (-2);
 	if (**str == '*')
 	{
-		a = va_arg(*ap, unsigned int);
+		a = va_arg(*ap, int);
 		(*str)++;
 	}
 	else
@@ -75,4 +75,13 @@ int	ft_get_type(char **str)
 		a = 7;
 	(*str)++;
 	return (a);
+}
+
+void	ft_check_flags(t_flags **flags)
+{
+	if ((*flags)->width < 0)
+	{
+		(*flags)->width = (-1) * (*flags)->width;
+		(*flags)->flag = -1;
+	}
 }

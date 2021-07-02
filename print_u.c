@@ -75,6 +75,8 @@ char	*ft_copy_u(va_list *ap, t_flags *flags)
 	unsigned int	a;
 
 	a = va_arg(*ap, unsigned int);
+	if (flags->precision == 0 && flags->width == 0)
+		return (ft_strdup(""));
 	tmp = ft_itoa_new_u(a);
 	if (!tmp)
 		return (NULL);
