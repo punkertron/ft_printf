@@ -11,6 +11,7 @@ typedef struct s_flags
 	int	width;
 	int	precision;
 	int	type;
+	int	sym;
 }	t_flags;
 
 int		ft_printf(const char *format, ...);
@@ -24,7 +25,8 @@ int		ft_get_precision(va_list *ap, char **str);
 int		ft_get_type(char **str);
 void	ft_check_flags(t_flags **flags);
 
-char	*ft_copy_c(va_list *ap, t_flags *flags);
+int		ft_copy_c(va_list *ap, t_flags *flags);
+void	ft_fill_c(t_flags **flags, char **copy, char c);
 
 char	*ft_copy_s(va_list *ap, t_flags *flags);
 int		ft_quantity_s(t_flags *flags, char *tmp);

@@ -15,7 +15,7 @@ RM			= rm -f
 CFLAGS		= -Wall -Wextra -Werror
 LIBC		= ar rcs
 
-$(NAME):	${OBJS} ${OBJS_L} ${HEADER} ${HEADER_L}
+$(NAME):	${OBJS} ${HEADER} ${HEADER_L}
 			${MAKE} all -C ./libft
 			cp ${LIBFT} ${NAME}
 			${LIBC} ${NAME} ${OBJS}
@@ -37,6 +37,6 @@ fclean:		clean
 re:			fclean all
 
 go:			$(NAME)
-			${CC}  -g main.c -L. -lftprintf && ./a.exe
+			${CC}  -g main.c -L. -lftprintf && ./a.out
 
 .PHONY:		all clean fclean re bonus go
