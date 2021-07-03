@@ -102,7 +102,7 @@ int	main(void)
 		printf("\nq = %d, i = %d", q, i);
 	}
 	*/
-
+/*
 	{
 		int i = ft_printf("| 0*%-0*.10d*0 0*%-0*.0d*0 |\n", 21, 1021, 21, -1011);
 		int q = printf("| 0*%-0*.10d*0 0*%-0*.0d*0 |\n", 21, 1021, 21, -1011);
@@ -141,6 +141,12 @@ int	main(void)
 	{
 		int i = ft_printf("|%10.2d|\n", -2147483647);
 		int q = printf("|%10.2d|\n", -2147483647);
+		printf("\nq = %d, i = %d", q, i);
+	}
+	*/
+	{
+		int i = ft_printf("| %-3.2d %10.42d |\n", 1, -1);
+		int q = printf("| %-3.2d %10.42d |\n", 1, -1);
 		printf("\nq = %d, i = %d", q, i);
 	}
 
