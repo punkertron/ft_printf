@@ -98,9 +98,9 @@ char	*ft_get_s(va_list *ap, t_flags *flags)
 		return (ft_strdup(s));
 	else
 	{
-		if (flags->precision > 5 || flags->precision == -2)
+		//if (flags->precision > 5 || flags->precision == -2)
 			return (ft_strdup("(null)"));
-		else
-			return (ft_strdup(""));
+		//else
+		//	return (ft_strdup(""));
 	}
 }

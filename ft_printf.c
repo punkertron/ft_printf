@@ -83,7 +83,10 @@ int	ft_next(va_list *ap, t_flags **flags)
 
 	copy = NULL;
 	if ((*flags)->type == 1)
+	{
+		free(*flags);
 		return (ft_copy_c(ap, *flags));
+	}
 	else if ((*flags)->type == 2)
 		copy = ft_copy_s(ap, *flags);
 	else if ((*flags)->type == 3)
