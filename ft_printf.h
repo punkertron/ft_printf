@@ -46,11 +46,16 @@ char	*ft_copy_x(va_list *ap, t_flags *flags);
 char	*ft_convert(unsigned int a, char *s);
 
 char	*ft_copy_p(va_list *ap, t_flags *flags);
+char	*ft_convert_p(size_t a, char *s);
+void	ft_fill_di2_u_p(char **copy, char *tmp, t_flags *flags, size_t a);
+void	ft_fill_di3_u_p(char **copy, char *tmp, t_flags *flags, size_t a);
+void	ft_fill_di_u_p(char **copy, char *tmp, t_flags *flags, size_t a);
 
 char	*ft_itoa_new(int n);
 char	*ft_itoa_new_u(unsigned int n);
 int		ft_fill_t(t_flags *flags, char *tmp, int a);
 int		ft_fill_t_u(t_flags *flags, char *tmp, unsigned int a);
 void	ft_putchar_a(char **str, int *a);
+char	*ft_strjoin_new(char const *s1, char **s2);
 
 #endif

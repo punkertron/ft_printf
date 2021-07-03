@@ -37,6 +37,6 @@ fclean:		clean
 re:			fclean all
 
 go:			$(NAME)
-			${CC} ${CFLAGS} -g main.c -L. -lftprintf && ./a.exe
+			${CC}  -g main.c -L. -lftprintf && ./a.exe
 
 .PHONY:		all clean fclean re bonus go

@@ -27,7 +27,7 @@ void	ft_fill_di2(char **copy, char *tmp, t_flags *flags, int a)
 	i = -1;
 	if (a < 0)
 		(*copy)[++i] = '-';
-	while (flags->precision - (++i) + 1 * (a < 0) > (int)ft_strlen(tmp))
+	while (flags->precision - (++i) > (int)ft_strlen(tmp))
 		(*copy)[i] = '0';
 	while (tmp[++r])
 		(*copy)[i++] = tmp[r];
@@ -58,7 +58,7 @@ void	ft_fill_di(char **copy, char *tmp, t_flags *flags, int a)
 			ft_fill_di3(copy, tmp, flags, a);
 		else
 		{
-			while (flags->width - ft_fill_t(flags, tmp, a) - 1 * (a < 0) > ++i)
+			while (flags->width - ft_fill_t(flags, tmp, a) > ++i)
 				(*copy)[i] = ' ';
 			save = (*copy);
 			(*copy) = (*copy) + i;

@@ -93,13 +93,56 @@ int	main(void)
 		printf("\nq = %d, i = %d", q, i);
 	}
 	*/
+/*
 	{
-		int q = ft_printf("|%.x|\n", 0);
-		int i = printf("|%.x|\n", 0);
+		char *str = NULL;
+		int q = ft_printf("|%.p|\n", -1);
+		(void) q;
+		int i = printf("|%.p|\n", -1);
+		printf("\nq = %d, i = %d", q, i);
+	}
+	*/
+
+	{
+		int i = ft_printf("| 0*%-0*.10d*0 0*%-0*.0d*0 |\n", 21, 1021, 21, -1011);
+		int q = printf("| 0*%-0*.10d*0 0*%-0*.0d*0 |\n", 21, 1021, 21, -1011);
+		printf("\nq = %d, i = %d", q, i);
+	}
+	ft_printf("\n-------------------------------------------------------\n");
+	{
+		int i = ft_printf("| 0*%0-*d*0 0*%0*d*0 |\n", 21, 1021, 21, -1011);
+		int q = printf("| 0*%0-*d*0 0*%0*d*0 |\n", 21, 1021, 21, -1011);
+		printf("\nq = %d, i = %d", q, i);
+	}
+	ft_printf("\n-------------------------------------------------------\n");
+	
+	{
+		int i = ft_printf("|%*d|\n", 21, 21);
+		int q = printf("|%*d|\n", 21, 21);
+		printf("\nq = %d, i = %d", q, i);
+	}
+	ft_printf("\n-------------------------------------------------------\n");
+	
+	{
+		int i = ft_printf("|%*d|\n", 21, -21);
+		int q = printf("|%*d|\n", 21, -21);
 		printf("\nq = %d, i = %d", q, i);
 	}
 
-
+	ft_printf("\n-------------------------------------------------------\n");
+	
+	{
+		int i = ft_printf("|%-*d|\n", 21, 21);
+		int q = printf("|%-*d|\n", 21, 21);
+		printf("\nq = %d, i = %d", q, i);
+	}
+	ft_printf("\n-------------------------------------------------------\n");
+	
+	{
+		int i = ft_printf("|%10.2d|\n", -2147483647);
+		int q = printf("|%10.2d|\n", -2147483647);
+		printf("\nq = %d, i = %d", q, i);
+	}
 
 //	printf("\n\nabc%%");
 	return (0);

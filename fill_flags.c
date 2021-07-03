@@ -5,6 +5,11 @@ int	ft_get_flag(char **str)
 	int	a;
 
 	a = 1;
+	if (**str == '0')
+	{
+		a = -3;
+		(*str)++;
+	}
 	if (**str == '-')
 	{
 		a = -1;
@@ -22,6 +27,11 @@ int	ft_get_width(va_list *ap, char **str)
 {
 	int	a;
 
+	if (**str == '0')
+	{
+		a = 0;
+		(*str)++;
+	}
 	if (**str == '*')
 	{
 		a = va_arg(*ap, int);
@@ -83,5 +93,9 @@ void	ft_check_flags(t_flags **flags)
 	{
 		(*flags)->width = (-1) * (*flags)->width;
 		(*flags)->flag = -1;
+	}
+	if ((*flags)->flag == -3)
+	{
+		(*flags)->precision = (*flags)->width;
 	}
 }
