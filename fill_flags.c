@@ -96,6 +96,7 @@ void	ft_check_flags(t_flags **flags)
 	}
 	if ((*flags)->flag == -3)
 	{
-		(*flags)->precision = (*flags)->width;
+		if ((*flags)->precision < (*flags)->width)
+			(*flags)->precision = (*flags)->width - 1;
 	}
 }
