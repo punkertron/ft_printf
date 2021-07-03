@@ -5,6 +5,8 @@ int	ft_quantity_s(t_flags *flags, char *tmp)
 	int	q;
 
 	q = ft_strlen(tmp);
+	if (q == 0)
+		return (flags->width);
 	if (flags->width > flags->precision && flags->width > q)
 		return (flags->width);
 	if (q > flags->precision && flags->precision != -2)
@@ -22,7 +24,7 @@ void	ft_fill_s2(int a, t_flags *flags, char *tmp, char **copy)
 	int	q;
 
 	q = ft_quantity_s(flags, tmp);
-	while (tmp[++a] && a < flags->precision)
+	while (tmp[++a] && (a < flags->precision || flags->precision == -2))
 		(*copy)[a] = tmp[a];
 	while (a < (int)q)
 	{
@@ -43,7 +45,7 @@ char	*ft_fill_s(t_flags *flags, char **copy, char *tmp, int q)
 		ft_fill_s2(a, flags, tmp, copy);
 	else
 	{
-		if (flags->precision <= (int)ft_strlen(tmp))
+		if (flags->precision != -2 && flags->precision <= (int)ft_strlen(tmp))
 			while (q - (++a) > flags->precision)
 				(*copy)[a] = ' ';
 		else
@@ -67,15 +69,16 @@ char	*ft_copy_s(va_list *ap, t_flags *flags)
 	int		a;
 
 	a = -1;
-	tmp = ft_strdup(va_arg(*ap, char *));
+	tmp = ft_get_s(ap, flags);
 	if (!tmp)
 		return (NULL);
 	q = ft_quantity_s(flags, tmp);
-//	printf("q=|%d|", q);
+//	printf("[q=%d]",q);
 	copy = malloc(sizeof(char) * (1 + q));
 	if (!copy)
 		return (NULL);
-	if (q == (int)ft_strlen(tmp))
+	if (q == (int)ft_strlen(tmp) && (flags->precision == (int)ft_strlen(tmp)
+			|| flags->precision == -2))
 	{
 		while (++a < q)
 			copy[a] = tmp[a];
@@ -85,4 +88,19 @@ char	*ft_copy_s(va_list *ap, t_flags *flags)
 		copy = ft_fill_s(flags, &copy, tmp, q);
 	free(tmp);
 	return (copy);
+}
+
+char	*ft_get_s(va_list *ap, t_flags *flags)
+{
+	char	*s;
+	s = va_arg(*ap, char *);
+	if (s)
+		return(ft_strdup(s));
+	else
+	{
+		if (flags->precision > 5 || flags->precision == -2)
+			return (ft_strdup("(null)"));
+		else
+			return (ft_strdup(""));
+	}
 }

@@ -7,14 +7,15 @@ char	*ft_copy_p(va_list *ap, t_flags *flags)
 	char	*conv;
 	size_t	a;
 
-	a = va_arg(*ap, unsigned int);
+	a = va_arg(*ap, size_t);
 	if (a == 0 && flags->precision == 0)
 		tmp = ft_strdup("0x");
 	else
 	{
-		conv = ft_convert(a, "0123456789abcdef");
+		conv = ft_convert_p(a, "0123456789abcdef");
 		tmp = ft_strjoin_new("0x", &conv);
 	}
+	//printf("[tmp=%s]", tmp);
 	if (!tmp)
 		return (NULL);
 	copy = malloc(sizeof(char) * (ft_quantity_di_u(flags, tmp, a) + 1));
@@ -27,7 +28,7 @@ char	*ft_copy_p(va_list *ap, t_flags *flags)
 
 char	*ft_convert_p(size_t a, char *s)
 {
-	ssize_t	i;
+	size_t	i;
 	size_t	q;
 	char	*save;
 
