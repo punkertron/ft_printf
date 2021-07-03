@@ -73,7 +73,6 @@ char	*ft_copy_s(va_list *ap, t_flags *flags)
 	if (!tmp)
 		return (NULL);
 	q = ft_quantity_s(flags, tmp);
-//	printf("[q=%d]",q);
 	copy = malloc(sizeof(char) * (1 + q));
 	if (!copy)
 		return (NULL);
@@ -93,9 +92,10 @@ char	*ft_copy_s(va_list *ap, t_flags *flags)
 char	*ft_get_s(va_list *ap, t_flags *flags)
 {
 	char	*s;
+
 	s = va_arg(*ap, char *);
 	if (s)
-		return(ft_strdup(s));
+		return (ft_strdup(s));
 	else
 	{
 		if (flags->precision > 5 || flags->precision == -2)

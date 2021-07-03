@@ -27,10 +27,20 @@ void	ft_fill_di2(char **copy, char *tmp, t_flags *flags, int a)
 	i = -1;
 	if (a < 0)
 		(*copy)[++i] = '-';
-	while (flags->precision - (++i) + 1 * (a < 0) > (int)ft_strlen(tmp))
-		(*copy)[i] = '0';
-	while (tmp[++r])
-		(*copy)[i++] = tmp[r];
+	if (a < 0)
+	{
+		while (flags->precision - (++i) >= (int)ft_strlen(tmp))
+			(*copy)[i] = '0';
+		while (tmp[++r])
+			(*copy)[i++] = tmp[r];
+	}
+	else
+	{
+		while (flags->precision - (++i) > (int)ft_strlen(tmp))
+			(*copy)[i] = '0';
+		while (tmp[++r])
+			(*copy)[i++] = tmp[r];
+	}
 	(*copy)[i] = '\0';
 }
 
@@ -85,6 +95,8 @@ char	*ft_copy_di(va_list *ap, t_flags *flags)
 	copy = malloc(sizeof(char) * (ft_quantity_di(flags, tmp, a) + 1));
 	if (!copy)
 		return (NULL);
+	if (flags->flag == -3 && flags->precision != ft_quantity_di(flags, tmp, a))
+		return (ft_fill_di_zero(&copy, &tmp, flags, a));
 	ft_fill_di(&copy, tmp, flags, a);
 	free(tmp);
 	return (copy);

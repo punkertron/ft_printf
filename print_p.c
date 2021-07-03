@@ -15,7 +15,6 @@ char	*ft_copy_p(va_list *ap, t_flags *flags)
 		conv = ft_convert_p(a, "0123456789abcdef");
 		tmp = ft_strjoin_new("0x", &conv);
 	}
-	//printf("[tmp=%s]", tmp);
 	if (!tmp)
 		return (NULL);
 	copy = malloc(sizeof(char) * (ft_quantity_di_u(flags, tmp, a) + 1));

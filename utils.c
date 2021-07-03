@@ -34,7 +34,7 @@ void	ft_putchar_a(char **str, int *a)
 
 char	*ft_strjoin_new(char const *s1, char **s2)
 {
-	char *dest;
+	char	*dest;
 
 	dest = ft_strjoin(s1, (*s2));
 	if ((*s2))

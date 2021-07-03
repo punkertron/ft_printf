@@ -1,5 +1,5 @@
 SRCS		= ft_printf.c fill_flags.c ft_itoa_new.c utils.c \
-				 print_c.c print_s.c print_di.c print_u.c print_x.c print_p.c
+				 print_c.c print_s.c print_di.c print_di2.c print_u.c print_x.c print_p.c
 SRCS_L		= libft/*.c
 
 OBJS		= ${SRCS:.c=.o}
@@ -37,6 +37,6 @@ fclean:		clean
 re:			fclean all
 
 go:			$(NAME)
-			${CC}  -g main.c -L. -lftprintf && ./a.out
+			${CC}  -g main.c -L. -lftprintf && ./a.exe
 
 .PHONY:		all clean fclean re bonus go

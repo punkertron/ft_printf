@@ -11,7 +11,6 @@ typedef struct s_flags
 	int	width;
 	int	precision;
 	int	type;
-	int	sym;
 }	t_flags;
 
 int		ft_printf(const char *format, ...);
@@ -38,6 +37,8 @@ int		ft_quantity_di(t_flags *flags, char *tmp, int a);
 void	ft_fill_di(char **copy, char *tmp, t_flags *flags, int a);
 void	ft_fill_di2(char **copy, char *tmp, t_flags *flags, int a);
 void	ft_fill_di3(char **copy, char *tmp, t_flags *flags, int a);
+char	*ft_fill_di_zero(char **copy, char **tmp, t_flags *flags, int a);
+void	ft_fill_di_end(char **copy, char *tmp, t_flags *flags, int h);
 
 char	*ft_copy_u(va_list *ap, t_flags *flags);
 void	ft_fill_di_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
