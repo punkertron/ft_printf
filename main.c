@@ -553,13 +553,13 @@ ft_printf("\n-------------------------------------------------------\n");
 		printf("\nq = %d, i = %d", q, i);
 	}
 	
-
+*/
 	{
 		int i = ft_printf("| 0*%0-*.*u*0 0*%0*.*u*0 |\n", 2, 6, 102, 21, 10, -101);
 		int q = printf("| 0*%0-*.*u*0 0*%0*.*u*0 |\n", 2, 6, 102, 21, 10, -101);
-		printf("\nq = %d, i = %d", q, i);
+		printf("\nq = %d, i = %d\n", q, i);
 	}
-	
+	/*
 	{
 		int i = ft_printf("|%0*x|\n", 21, -1011);
 		int q = printf("|%0*x|\n", 21, -1011);
@@ -590,11 +590,17 @@ ft_printf("\n-------------------------------------------------------\n");
 	ft_printf("|%02x|\n", 698334);
 	printf("|%04x|\n", 698334);
 	*/
-
-	int i = printf("|%-8.*47..4*%|");
-	int	q = ft_printf("|%-8.*47..4*%|");
-	printf("\ni = %d, q = %d", i, q);
-	
+/*
+{
+	int	q = ft_printf("|%-8.%|");
+	printf("\nq = %d", q);
+}
+*/	
+	{
+		int i = ft_printf("|%.*s|\n", -1, 0);
+		int q = printf("|%*.5i||\n", 4, 42);
+		printf("i = %d, q = %d\n", i, q);
+	}
 	
 	//ft_printf("\n\nFINAL!!!");
 	return (0);

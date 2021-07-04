@@ -16,7 +16,7 @@ typedef struct s_flags
 int		ft_printf(const char *format, ...);
 int		ft_printf_next(char **str, char **tmp, va_list *ap);
 int		ft_format(char **str, va_list *ap);
-int		ft_next(va_list *ap, t_flags **flags);
+int		ft_next(char *copy, va_list *ap, t_flags **flags);
 void	ft_final_printf(char **copy, t_flags **flags, int *q);
 
 int		ft_get_flag(char **str);
@@ -60,6 +60,8 @@ char	*ft_convert_p(size_t a, char *s);
 void	ft_fill_di2_u_p(char **copy, char *tmp, t_flags *flags, size_t a);
 void	ft_fill_di3_u_p(char **copy, char *tmp, t_flags *flags, size_t a);
 void	ft_fill_di_u_p(char **copy, char *tmp, t_flags *flags, size_t a);
+
+char	*ft_copy_percent(t_flags *flags);
 
 char	*ft_itoa_new(int n);
 char	*ft_itoa_new_u(unsigned int n);

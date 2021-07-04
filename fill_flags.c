@@ -83,6 +83,8 @@ int	ft_get_type(char **str)
 		a = 6;
 	else if (**str == 'X')
 		a = 7;
+	else if (**str == '%')
+		a = 8;
 	(*str)++;
 	return (a);
 }
@@ -94,4 +96,6 @@ void	ft_check_flags(t_flags **flags)
 		(*flags)->width = (-1) * (*flags)->width;
 		(*flags)->flag = -1;
 	}
+	if ((*flags)->precision < 0)
+		(*flags)->precision = -2;
 }
