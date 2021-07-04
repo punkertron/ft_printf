@@ -66,29 +66,25 @@ char	*ft_fill_pres_zero(char **copy, char**tmp, t_flags *flags)
 	return (*copy);
 }
 
-char	*ft_ok_di(char **tmp, int a)
+char	*ft_ok_di(char **tmp, char **copy, int a)
 {
-	char	*copy;
 	int		i;
 	int		t;
-	
-	copy = malloc(sizeof(char) * ((int)ft_strlen(*tmp) + 1 * (a < 0)));
-	if (!copy)
-		return (NULL);
+
 	i = 0;
 	t = 0;
 	if (a < 0)
 	{
-		copy[i] = '-';
+		(*copy)[i] = '-';
 		i++;
 	}
 	while ((*tmp)[t])
 	{
-		copy[i] = (*tmp)[t];
+		(*copy)[i] = (*tmp)[t];
 		i++;
 		t++;
 	}
-	copy[i] = '\0';
+	(*copy)[i] = '\0';
 	free(*tmp);
-	return (copy);
+	return (*copy);
 }

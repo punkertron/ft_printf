@@ -30,7 +30,7 @@ char	*ft_copy_percent(t_flags *flags)
 	copy = malloc(sizeof(char) * (flags->width + 1));
 	if (!copy)
 		return (NULL);
-	if (flags->flag == -1)
+	if (flags->flag != -1)
 	{
 		while (++q < flags->width - 1)
 			copy[q] = ' ';

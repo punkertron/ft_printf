@@ -90,13 +90,13 @@ char	*ft_copy_di(va_list *ap, t_flags *flags)
 	tmp = ft_itoa_new(a);
 	if (!tmp)
 		return (NULL);
-	if ((int)ft_strlen(tmp) + 1 * (a < 0) == ft_quan_di(flags, tmp, a))
-		return (ft_ok_di(&tmp, a));
 	copy = malloc(sizeof(char) * (ft_quan_di(flags, tmp, a) + 1));
 	if (!copy)
 		return (NULL);
 	if (flags->precision == 0 && tmp[0] == '0' && tmp[1] == '\0')
 		return (ft_fill_pres_zero(&copy, &tmp, flags));
+	if ((int)ft_strlen(tmp) + 1 * (a < 0) == ft_quan_di(flags, tmp, a))
+		return (ft_ok_di(&tmp, &copy, a));
 	if (flags->flag == -3
 		&& flags->precision != ft_quan_di(flags, tmp, a))
 		return (ft_fill_di_zero(&copy, &tmp, flags, a));
