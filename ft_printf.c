@@ -67,12 +67,12 @@ int	ft_format(char **str, va_list *ap)
 	flags->precision = ft_get_precision(ap, str);
 	flags->type = ft_get_type(str);
 	ft_check_flags(&flags);
-	/*
+/*	
 	printf("\nflag = %d", flags->flag);
 	printf("\nwidth = %d", flags->width);
 	printf("\nprecision = %d", flags->precision);
 	printf("\ntype = %d\n", flags->type);
-	*/
+*/	
 	return (ft_next(ap, &flags));
 }
 
