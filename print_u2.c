@@ -11,8 +11,10 @@ char	*ft_di_zero_u(char **copy, char **tmp, t_flags *flags, unsigned int a)
 	{
 		while ((flags->width)-- >= (int)ft_strlen(*tmp))
 			(*copy)[++q] = '0';
-		while ((*tmp)[r])
-			(*copy)[q++] = (*tmp)[++r];
+		if (q < 0)
+			q = 0;
+		while ((*tmp)[++r])
+			(*copy)[q++] = (*tmp)[r];
 		(*copy)[q] = '\0';
 	}
 	else
