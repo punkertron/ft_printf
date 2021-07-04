@@ -46,6 +46,8 @@ char	*ft_copy_x(va_list *ap, t_flags *flags)
 	copy = malloc(sizeof(char) * (ft_quantity_di_u(flags, tmp, a) + 1));
 	if (!copy)
 		return (NULL);
+	if (flags->precision == -3)
+		return (ft_fill_di_zero(&copy, &tmp, flags, a));
 	ft_fill_di_u(&copy, tmp, flags, a);
 	free(tmp);
 	return (copy);
