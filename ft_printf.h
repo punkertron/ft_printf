@@ -43,6 +43,7 @@ void	ft_fill_di3(char **copy, char *tmp, t_flags *flags, int a);
 char	*ft_fill_di_zero(char **copy, char **tmp, t_flags *flags, int a);
 void	ft_fill_di_end(char **copy, char *tmp, t_flags *flags, int a);
 char	*ft_fill_pres_zero(char **copy, char**tmp, t_flags *flags);
+char	*ft_ok_di(char **tmp, int a);
 
 char	*ft_copy_u(va_list *ap, t_flags *flags);
 void	ft_fill_di_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
