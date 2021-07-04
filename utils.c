@@ -41,3 +41,15 @@ char	*ft_strjoin_new(char const *s1, char **s2)
 		free (*s2);
 	return (dest);
 }
+
+void	ft_fill_zero_s(char **copy)
+{
+	int	a;
+
+	a = 0;
+	while ((*copy)[a] == ' ')
+	{
+		(*copy)[a] = '0';
+		a++;
+	}
+}

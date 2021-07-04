@@ -7,7 +7,7 @@ int	ft_quantity_s(t_flags *flags, char *tmp)
 	q = ft_strlen(tmp);
 	if (q == 0)
 		return (flags->width);
-	if (flags->width > flags->precision && flags->width > q)
+	if (flags->width >= flags->precision && flags->width > q)
 		return (flags->width);
 	if (q > flags->precision && flags->precision != -2)
 	{
@@ -65,27 +65,27 @@ char	*ft_copy_s(va_list *ap, t_flags *flags)
 {
 	char	*copy;
 	char	*tmp;
-	int		q;
 	int		a;
 
 	a = -1;
 	tmp = ft_get_s(ap, flags);
 	if (!tmp)
 		return (NULL);
-	q = ft_quantity_s(flags, tmp);
-	copy = malloc(sizeof(char) * (1 + q));
+	copy = malloc(sizeof(char) * (1 + ft_quantity_s(flags, tmp)));
 	if (!copy)
 		return (NULL);
-	if (q == (int)ft_strlen(tmp) && (flags->precision == (int)ft_strlen(tmp)
-			|| flags->precision == -2))
+	if (ft_quantity_s(flags, tmp) == (int)ft_strlen(tmp)
+		&& (flags->precision == (int)ft_strlen(tmp) || flags->precision == -2))
 	{
-		while (++a < q)
+		while (++a < ft_quantity_s(flags, tmp))
 			copy[a] = tmp[a];
 		copy[a] = '\0';
 	}
 	else
-		copy = ft_fill_s(flags, &copy, tmp, q);
+		copy = ft_fill_s(flags, &copy, tmp, ft_quantity_s(flags, tmp));
 	free(tmp);
+	if (flags->flag == -3)
+		ft_fill_zero_s(&copy);
 	return (copy);
 }
 

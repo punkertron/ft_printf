@@ -4,6 +4,7 @@
 int	main(void)
 {
 	ft_printf("\n-------------------------------------------------------\n");
+	/*
 	{
 		int q = ft_printf("Hello!|%4c|PRIVET|%-4c|Hey!!|%c|\n", 'Y', 'P', 54);
 		int i = printf("Hello!|%4c|PRIVET|%-4c|Hey!!|%c|\n", 'Y', 'P', 54);
@@ -569,8 +570,32 @@ ft_printf("\n-------------------------------------------------------\n");
 		int q = printf("|%p|\n", NULL);
 		printf("\nq = %d, i = %d", q, i);
 	}
+	
+	//ft_printf("|%5%|\n");
+	printf("|%-5%|\n");
+	ft_printf("|%0*.*s|\n", 10, 2, "hello");
+	printf("|%0*.*s|\n", 10, 2, "hello");
 
+	ft_printf("------------\n");
+	ft_printf("|%03x|\n", 698334);
+	printf("|%03x|\n", 698334);
+	ft_printf("------------\n");
+	ft_printf("|%0*.*i test|\n",2, -2, 8);
+	printf("|%0*.*i test|\n",2, -2, 8);
 
-	ft_printf("\n\nFINAL!!!");
+	ft_printf("|%0.7c|\n", 'Y');
+	printf("|%0.7c|\n", 'Y');
+	
+
+	ft_printf("|%02x|\n", 698334);
+	printf("|%04x|\n", 698334);
+	*/
+
+	int i = printf("|%-8.*47..4*%|");
+	int	q = ft_printf("|%-8.*47..4*%|");
+	printf("\ni = %d, q = %d", i, q);
+	
+	
+	//ft_printf("\n\nFINAL!!!");
 	return (0);
 }

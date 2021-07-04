@@ -3,6 +3,7 @@
 
 # include <stdarg.h>
 # include "libft/libft.h"
+# include <stdio.h>
 
 typedef struct s_flags
 {
@@ -26,11 +27,13 @@ void	ft_check_flags(t_flags **flags);
 
 int		ft_copy_c(va_list *ap, t_flags **flags);
 void	ft_fill_c(t_flags **flags, char **copy, char c);
+int		ft_fill_zero_c(t_flags **flags, char c);
 
 char	*ft_copy_s(va_list *ap, t_flags *flags);
 int		ft_quantity_s(t_flags *flags, char *tmp);
 void	ft_fill_s2(int a, t_flags *flags, char *tmp, char **copy);
 char	*ft_get_s(va_list *ap, t_flags *flags);
+void	ft_fill_zero_s(char **copy);
 
 char	*ft_copy_di(va_list *ap, t_flags *flags);
 int		ft_quan_di(t_flags *flags, char *tmp, int a);

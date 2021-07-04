@@ -28,6 +28,8 @@ int	ft_copy_c(va_list *ap, t_flags **flags)
 
 	a = 0;
 	c = va_arg(*ap, int);
+	if ((*flags)->flag == -3)
+		return (ft_fill_zero_c(flags, c));
 	if ((*flags)->flag == -1)
 	{
 		ft_putchar(c);
@@ -40,6 +42,21 @@ int	ft_copy_c(va_list *ap, t_flags **flags)
 			ft_putchar(' ');
 		ft_putchar(c);
 	}
+	free(*flags);
+	return (a);
+}
+
+int	ft_fill_zero_c(t_flags **flags, char c)
+{
+	int	a;
+
+	a = 1;
+	while (a < (*flags)->width)
+	{
+		ft_putchar('0');
+		a++;
+	}
+	ft_putchar(c);
 	free(*flags);
 	return (a);
 }
