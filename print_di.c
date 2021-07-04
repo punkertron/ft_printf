@@ -91,7 +91,6 @@ char	*ft_copy_di(va_list *ap, t_flags *flags)
 	if (!tmp)
 		return (NULL);
 	copy = malloc(sizeof(char) * (ft_quantity_di(flags, tmp, a) + 1));
-	//printf("[q=%d]\n", ft_quantity_di(flags, tmp, a));
 	if (!copy)
 		return (NULL);
 	if (flags->precision == 0 && tmp[0] == '0' && tmp[1] == '\0')

@@ -35,8 +35,6 @@ char	*ft_copy_x(va_list *ap, t_flags *flags)
 	unsigned int	a;
 
 	a = va_arg(*ap, unsigned int);
-	if (flags->precision == 0 && flags->width == 0)
-		return (ft_strdup(""));
 	if (flags->type == 6)
 		tmp = ft_convert(a, "0123456789abcdef");
 	else
@@ -46,7 +44,9 @@ char	*ft_copy_x(va_list *ap, t_flags *flags)
 	copy = malloc(sizeof(char) * (ft_quantity_di_u(flags, tmp, a) + 1));
 	if (!copy)
 		return (NULL);
-	if (flags->precision == -3)
+	if (flags->precision == 0 && tmp[0] == '0' && tmp[1] == '\0')
+		return (ft_fill_pres_zero(&copy, &tmp, flags));
+	if (flags->precision == -3 && flags->precision != ft_quantity_di(flags, tmp, a))
 		return (ft_fill_di_zero(&copy, &tmp, flags, a));
 	ft_fill_di_u(&copy, tmp, flags, a);
 	free(tmp);
