@@ -8,12 +8,14 @@ int	ft_get_flag(char **str)
 	if (**str == '0')
 	{
 		a = -3;
-		(*str)++;
+		while (ft_check_zero(**str))
+			(*str)++;
 	}
 	if (**str == '-')
 	{
 		a = -1;
-		(*str)++;
+		while (ft_check_min_zero(**str))
+			(*str)++;
 	}
 	else if (**str == '0')
 	{

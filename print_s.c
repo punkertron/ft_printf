@@ -7,7 +7,7 @@ int	ft_quantity_s(t_flags *flags, char *tmp)
 	q = ft_strlen(tmp);
 	if (q == 0)
 		return (flags->width);
-	if (flags->width >= flags->precision && flags->width > q)
+	if (q <= flags->precision && flags->width > q)
 		return (flags->width);
 	if (q > flags->precision && flags->precision != -2)
 	{

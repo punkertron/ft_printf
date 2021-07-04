@@ -24,6 +24,8 @@ int		ft_get_width(va_list *ap, char **str);
 int		ft_get_precision(va_list *ap, char **str);
 int		ft_get_type(char **str);
 void	ft_check_flags(t_flags **flags);
+int		ft_check_zero(char c);
+int		ft_check_min_zero(char c);
 
 int		ft_copy_c(va_list *ap, t_flags **flags);
 void	ft_fill_c(t_flags **flags, char **copy, char c);
