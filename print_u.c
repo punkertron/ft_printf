@@ -84,7 +84,7 @@ char	*ft_copy_u(va_list *ap, t_flags *flags)
 	if (flags->precision == 0 && tmp[0] == '0' && tmp[1] == '\0')
 		return (ft_fill_pres_zero(&copy, &tmp, flags));
 	if (flags->flag == -3 && flags->precision != ft_quantity_di(flags, tmp, a))
-		return (ft_fill_di_zero(&copy, &tmp, flags, a));
+		return (ft_fill_di_zero_u(&copy, &tmp, flags, a));
 	ft_fill_di_u(&copy, tmp, flags, a);
 	free(tmp);
 	return (copy);
