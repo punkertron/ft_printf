@@ -11,7 +11,7 @@ int	ft_quan_di(t_flags *flags, char *tmp, int a)
 		return (q);
 	else
 	{
-		if (flags->width >= flags->precision)
+		if (flags->width > flags->precision)
 			return (flags->width);
 		else
 			return (flags->precision + 1 * (a < 0));
