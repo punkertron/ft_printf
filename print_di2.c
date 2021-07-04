@@ -29,7 +29,7 @@ void	ft_fill_di_end(char **copy, char *tmp, t_flags *flags, int a)
 	int	p;
 	int	h;
 
-	h = ft_quantity_di(flags, tmp, a);
+	h = ft_quan_di(flags, tmp, a);
 	p = flags->precision;
 	t = ft_strlen(tmp);
 	(*copy)[h + 1] = '\0';

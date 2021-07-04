@@ -67,12 +67,6 @@ int	ft_format(char **str, va_list *ap)
 	flags->precision = ft_get_precision(ap, str);
 	flags->type = ft_get_type(str);
 	ft_check_flags(&flags);
-/*	
-	printf("\nflag = %d", flags->flag);
-	printf("\nwidth = %d", flags->width);
-	printf("\nprecision = %d", flags->precision);
-	printf("\ntype = %d\n", flags->type);
-*/	
 	return (ft_next(ap, &flags));
 }
 
@@ -83,10 +77,7 @@ int	ft_next(va_list *ap, t_flags **flags)
 
 	copy = NULL;
 	if ((*flags)->type == 1)
-	{
-		free(*flags);
-		return (ft_copy_c(ap, *flags));
-	}
+		return (ft_copy_c(ap, flags));
 	else if ((*flags)->type == 2)
 		copy = ft_copy_s(ap, *flags);
 	else if ((*flags)->type == 3)
@@ -102,9 +93,14 @@ int	ft_next(va_list *ap, t_flags **flags)
 		free(*flags);
 		return (-1);
 	}
-	ft_putstr_fd(copy, 1);
-	q = ft_strlen(copy);
-	free(copy);
-	free(*flags);
+	ft_final_printf(&copy, flags, &q);
 	return (q);
+}
+
+void	ft_final_printf(char **copy, t_flags **flags, int *q)
+{
+	ft_putstr_fd(*copy, 1);
+	*q = ft_strlen(*copy);
+	free(*copy);
+	free(*flags);
 }

@@ -3,7 +3,6 @@
 
 # include <stdarg.h>
 # include "libft/libft.h"
-# include <stdio.h>
 
 typedef struct s_flags
 {
@@ -17,6 +16,7 @@ int		ft_printf(const char *format, ...);
 int		ft_printf_next(char **str, char **tmp, va_list *ap);
 int		ft_format(char **str, va_list *ap);
 int		ft_next(va_list *ap, t_flags **flags);
+void	ft_final_printf(char **copy, t_flags **flags, int *q);
 
 int		ft_get_flag(char **str);
 int		ft_get_width(va_list *ap, char **str);
@@ -24,7 +24,7 @@ int		ft_get_precision(va_list *ap, char **str);
 int		ft_get_type(char **str);
 void	ft_check_flags(t_flags **flags);
 
-int		ft_copy_c(va_list *ap, t_flags *flags);
+int		ft_copy_c(va_list *ap, t_flags **flags);
 void	ft_fill_c(t_flags **flags, char **copy, char c);
 
 char	*ft_copy_s(va_list *ap, t_flags *flags);
@@ -33,7 +33,7 @@ void	ft_fill_s2(int a, t_flags *flags, char *tmp, char **copy);
 char	*ft_get_s(va_list *ap, t_flags *flags);
 
 char	*ft_copy_di(va_list *ap, t_flags *flags);
-int		ft_quantity_di(t_flags *flags, char *tmp, int a);
+int		ft_quan_di(t_flags *flags, char *tmp, int a);
 void	ft_fill_di(char **copy, char *tmp, t_flags *flags, int a);
 void	ft_fill_di2(char **copy, char *tmp, t_flags *flags, int a);
 void	ft_fill_di3(char **copy, char *tmp, t_flags *flags, int a);
@@ -46,8 +46,8 @@ void	ft_fill_di_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
 void	ft_fill_di3_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
 void	ft_fill_di2_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
 int		ft_quantity_di_u(t_flags *flags, char *tmp, unsigned int a);
-void	ft_fill_di_end_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
-char	*ft_fill_di_zero_u(char **copy, char **tmp, t_flags *flags, unsigned int a);
+void	ft_di_end_u(char **copy, char *tmp, t_flags *flags, unsigned int a);
+char	*ft_di_zero_u(char **copy, char **tmp, t_flags *flags, unsigned int a);
 
 char	*ft_copy_x(va_list *ap, t_flags *flags);
 char	*ft_convert(unsigned int a, char *s);

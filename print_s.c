@@ -98,7 +98,7 @@ char	*ft_get_s(va_list *ap, t_flags *flags)
 		return (ft_strdup(s));
 	else
 	{
-			(void) flags;
-			return (ft_strdup("(null)"));
+		return (ft_strdup("(null)"));
 	}
+	(void) flags;
 }

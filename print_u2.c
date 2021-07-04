@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-char	*ft_fill_di_zero_u(char **copy, char **tmp, t_flags *flags, unsigned int a)
+char	*ft_di_zero_u(char **copy, char **tmp, t_flags *flags, unsigned int a)
 {
 	int	q;
 	int	r;
@@ -16,12 +16,12 @@ char	*ft_fill_di_zero_u(char **copy, char **tmp, t_flags *flags, unsigned int a)
 		(*copy)[q] = '\0';
 	}
 	else
-		ft_fill_di_end_u(copy, *tmp, flags, a);
+		ft_di_end_u(copy, *tmp, flags, a);
 	free(*tmp);
 	return (*copy);
 }
 
-void	ft_fill_di_end_u(char **copy, char *tmp, t_flags *flags, unsigned int a)
+void	ft_di_end_u(char **copy, char *tmp, t_flags *flags, unsigned int a)
 {
 	int	t;
 	int	p;
