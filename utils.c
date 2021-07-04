@@ -6,7 +6,7 @@ int	ft_fill_t(t_flags *flags, char *tmp, int a)
 
 	if (flags->flag == -3)
 		return (flags->width);
-	if (flags->precision > ((int)ft_strlen(tmp) + 1 * (a < 0)))
+	if (flags->precision > ((int)ft_strlen(tmp)))
 		m = flags->precision + 1 * (a < 0);
 	else
 		m = (int)ft_strlen(tmp) + 1 * (a < 0);
