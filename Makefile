@@ -1,10 +1,8 @@
 SRCS		= ft_printf.c fill_flags.c ft_itoa_new.c utils.c zero_minus.c \
 				 print_c.c print_s.c print_di.c print_di2.c print_u.c \
 				 print_u2.c print_x.c print_p.c print_per.c
-SRCS_L		= libft/*.c
 
 OBJS		= ${SRCS:.c=.o}
-OBJS_L		= ${SRCS_L:.c=.o}
 
 NAME		= libftprintf.a
 LIBFT		= libft/libft.a
@@ -33,11 +31,8 @@ clean:
 			${MAKE} fclean -C ./libft
 
 fclean:		clean
-			${RM} ${NAME} a.exe
+			${RM} ${NAME}
 
 re:			fclean all
 
-go:			$(NAME)
-			${CC}  -g main.c -L. -lftprintf && ./a.exe
-
-.PHONY:		all clean fclean re bonus go
+.PHONY:		all clean fclean re bonus
