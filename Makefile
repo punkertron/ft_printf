@@ -11,7 +11,7 @@ HEADER_L	= libft/libft.h
 
 CC			= gcc
 RM			= rm -f
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -O2
 LIBC		= ar rcs
 
 $(NAME):	${OBJS} ${HEADER} ${HEADER_L}

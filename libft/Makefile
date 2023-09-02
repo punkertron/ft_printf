@@ -51,7 +51,7 @@ HEADER	= libft.h
 
 CC		= gcc
 RM		= rm -f
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -O2
 LIBC	= ar rcs
 
 
